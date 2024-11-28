@@ -3,13 +3,11 @@ const ClientError = require('../../Commons/exceptions/ClientError');
 const DomainErrorTranslator = require('../../Commons/exceptions/DomainErrorTranslator');
 const users = require('../../Interfaces/http/api/users');
 const authentications = require('../../Interfaces/http/api/authentications');
-const config = require('../../Commons/config');
 
 const createServer = async (container) => {
   const server = Hapi.server({
-    port: config.app.port,
-    host: config.app.host,
-    debug: config.app.debug,
+    port: process.env.PORT,
+    host: process.env.HOST,
   });
 
   await server.register([
